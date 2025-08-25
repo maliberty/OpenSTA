@@ -550,7 +550,7 @@ target_compile_options(OpenSTA
 
 # Disable compiler specific extensions like gnu++11.
 set_target_properties(OpenSTA PROPERTIES CXX_EXTENSIONS OFF)
-target_compile_features(OpenSTA PUBLIC cxx_std_17)
+target_compile_features(OpenSTA PUBLIC cxx_std_20)
 
 message(STATUS "STA library: ${CMAKE_BINARY_DIR}/libOpenSTA.a")
 

@@ -6303,12 +6303,17 @@ void FilterLibertyGroupVisitor::begin(LibertyGroup *group)
     return;
   }
 
-  if (strcmp(group->type(), "normalized_driver_waveform") == 0 ||
-      strncmp(group->type(), "output_current", 14) == 0 ||
-      strncmp(group->type(), "ocv", 3) == 0 ||
-      strncmp(group->type(), "output_ccb", 10) == 0 ||
-      strncmp(group->type(), "input_ccb", 9) == 0 ||
-      strncmp(group->type(), "receiver_capacitance", 20) == 0) {
+  std::string type = group->type();
+  if (type == "normalized_driver_waveform" ||
+      type.starts_with("output_current") ||
+      type.starts_with("ocv") ||
+      type == "output_ccb" ||
+      type == "input_ccb" ||
+      type.starts_with("receiver_capacitance") ||
+      type.starts_with("output_voltage") ||
+      type.starts_with("ccsn") ||
+      type.starts_with("ecsm") ||
+      type == "dynamic_current") {
     skip_group_ = group;
     depth_ += 2;
     return;
